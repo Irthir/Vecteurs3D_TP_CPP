@@ -1,4 +1,7 @@
 #pragma once
+#ifndef H_VECTEUR3D
+#define H_VECTEUR3D
+
 #include <iostream>
 
 using namespace std;
@@ -6,7 +9,7 @@ using namespace std;
 template <class T> class TVecteur3D
 {
 protected:
-	float m_x, m_y, m_z; //Les coordonnées caractérisants le vecteur 3D
+	T m_x, m_y, m_z; //Les coordonnées caractérisants le vecteur 3D
 public :
 	//Les constructeurs
 	TVecteur3D(T x=0.f, T y=0.f, T z=0.f); //Le constructeur
@@ -42,7 +45,7 @@ public :
 	TVecteur3D operator^(const TVecteur3D vec3dA); //Produit Vectoriel
 	TVecteur3D operator=(const TVecteur3D vec3dA); //Affectation
 	bool operator==(const TVecteur3D vec3dA); //Coincide
-	friend ostream& operator<<(ostream& os, const TVecteur3D& vec3d) /Affichage.
+	friend ostream& operator<<(ostream& os, const TVecteur3D& vec3d) //Affichage
 	{
 		cout << "X = " << vec3d.m_x << " Y = " << vec3d.m_y << " Z = " << vec3d.m_z;
 		return os;
@@ -158,7 +161,7 @@ inline TVecteur3D<T> TVecteur3D<T>::ProduitMixte(TVecteur3D vec3dA, T determinan
 #pragma endregion
 
 //Surcharge des opérateurs.
-#pragma region surchage des opérateurs.
+#pragma region surcharge des opérateurs.
 template <class T>
 inline TVecteur3D<T> TVecteur3D<T>:: operator+(const TVecteur3D vec3dA)
 {
@@ -227,8 +230,10 @@ inline bool TVecteur3D<T>::operator==(const TVecteur3D vec3dA)
 {
 	bool bResult;
 
-	bResult = ((vec3dA.m_x == vec3dB.m_x) && (vec3dA.m_y == vec3dB.m_y) && (vec3dA.m_z == vec3dB.m_z));
-
+	bResult = ((vec3dA.m_x == this->m_x) && (vec3dA.m_y == this->m_y) && (vec3dA.m_z == this->m_z));
+	
 	return bResult;
 }
 #pragma endregion
+
+#endif // !H_VECTEUR3D

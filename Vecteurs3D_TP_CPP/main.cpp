@@ -1,5 +1,6 @@
 #include <iostream>
 #include "TVecteur3D.h"
+#include "TVecteur2D.h"
 
 using namespace std;
 
@@ -47,6 +48,23 @@ int main()
 	cout << "Produit Scalaire de A et B : " << (vecA*vecB) << endl;
 
 	cout << "Produit vectoriel de A et B : " << endl << (vecA ^ vecB) << endl;
+
+	//Travail 2 :
+
+	TVecteur2D<int> vectA(1, 2);
+	TVecteur2D<int> vectB(3, 4);
+
+	cout << "Affichage des vecteurs A et B : " << endl;
+	vectA.Affiche();
+	vectB.Affiche();
+
+	cout << "Addition des vecteurs A et B : " << endl << (vectA + vectB) << endl;
+
+	cout << "Soustration du vecteur A par B : " << endl << (vectA - vectB) << endl;
+
+	cout << "Produit Scalaire de A et B : " << (vectA * vectB) << endl;
+
+	cout << "Produit vectoriel de A et B : " << endl << (vectA ^ vectB) << endl;
 
 	return 0;
 }
