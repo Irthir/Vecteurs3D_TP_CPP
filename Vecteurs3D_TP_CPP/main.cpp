@@ -7,10 +7,13 @@ int main()
 {
 	setlocale(LC_ALL, ""); //Pour mettre les accents dans la console.
 
+	//Travail 1 :
+
 	TVecteur3D<float> vecA(1.f, 2.f, 3.f);
 	TVecteur3D<float> vecB(3.f, 2.f, 1.f);
 	TVecteur3D<float> vecC(5.f, 5.f, 4.f);
 
+	//Version 1 :
 	cout << "Affichage des vecteurs A, B et C : " << endl;
 	vecA.Affiche();
 	vecB.Affiche();
@@ -33,6 +36,17 @@ int main()
 
 	cout << "Calcul du Produit mixte de A, B et du déterminant précédent : " << endl;
 	vecA.ProduitMixte(vecB, fDeterminant).Affiche();
+
+	//Version 2 :
+	cout << "Passons aux surcharge d'opérateurs !" << endl;
+
+	cout << "Addition des vecteurs A et B : " << endl << (vecA + vecB) << endl;
+
+	cout << "Soustration du vecteur A par B : " << endl << (vecA - vecB) << endl;
+
+	cout << "Produit Scalaire de A et B : " << (vecA*vecB) << endl;
+
+	cout << "Produit vectoriel de A et B : " << endl << (vecA ^ vecB) << endl;
 
 	return 0;
 }

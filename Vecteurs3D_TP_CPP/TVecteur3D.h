@@ -33,6 +33,20 @@ public :
 
 		return bResult;
 	}
+
+	//Surcharges d'opérateurs :
+	TVecteur3D operator+(const TVecteur3D vec3dA); //Addition
+	TVecteur3D operator-(const TVecteur3D vec3dA); //Soustraction
+	TVecteur3D operator*(const T scalaire); //Multiplication par Scalaire
+	T operator*(const TVecteur3D vec3dA); //Produit Scalaire
+	TVecteur3D operator^(const TVecteur3D vec3dA); //Produit Vectoriel
+	TVecteur3D operator=(const TVecteur3D vec3dA); //Affectation
+	bool operator==(const TVecteur3D vec3dA); //Coincide
+	friend ostream& operator<<(ostream& os, const TVecteur3D& vec3d) /Affichage.
+	{
+		cout << "X = " << vec3d.m_x << " Y = " << vec3d.m_y << " Z = " << vec3d.m_z;
+		return os;
+	}
 };
 
 //Les constructeurs
@@ -61,6 +75,7 @@ inline void TVecteur3D<T>::Affiche() const
 }
 
 //Opérations usuelles sur les Vecteurs.
+#pragma region Opérations usuelles sur les vecteurs
 
 template <class T>
 inline TVecteur3D<T> TVecteur3D<T>::Addition(TVecteur3D vec3dA)
@@ -77,6 +92,7 @@ template <class T>
 inline TVecteur3D<T> TVecteur3D<T>::Soustraction(TVecteur3D vec3dA)
 {
 	TVecteur3D vecResult;
+
 	vecResult.m_x = this->m_x - vec3dA.m_x;
 	vecResult.m_y = this->m_y - vec3dA.m_y;
 	vecResult.m_z = this->m_z - vec3dA.m_z;
@@ -100,9 +116,9 @@ template <class T>
 inline T TVecteur3D<T>::ProduitScalaire(TVecteur3D vec3dA)
 {
 	T scalaireResult;
-	
+
 	scalaireResult = (this->m_x * vec3dA.m_x) + (this->m_y * vec3dA.m_y) + (this->m_z * vec3dA.m_z);
-	
+
 	return scalaireResult;
 }
 
@@ -139,3 +155,80 @@ inline TVecteur3D<T> TVecteur3D<T>::ProduitMixte(TVecteur3D vec3dA, T determinan
 
 	return vecResult;
 }
+#pragma endregion
+
+//Surcharge des opérateurs.
+#pragma region surchage des opérateurs.
+template <class T>
+inline TVecteur3D<T> TVecteur3D<T>:: operator+(const TVecteur3D vec3dA)
+{
+	TVecteur3D vecResult;
+	vecResult.m_x = this->m_x + vec3dA.m_x;
+	vecResult.m_y = this->m_y + vec3dA.m_y;
+	vecResult.m_z = this->m_z + vec3dA.m_z;
+
+	return vecResult;
+}
+
+template <class T>
+inline TVecteur3D<T> TVecteur3D<T>::operator-(const TVecteur3D vec3dA)
+{
+	TVecteur3D vecResult;
+
+	vecResult.m_x = this->m_x - vec3dA.m_x;
+	vecResult.m_y = this->m_y - vec3dA.m_y;
+	vecResult.m_z = this->m_z - vec3dA.m_z;
+
+	return vecResult;
+}
+
+template <class T>
+inline TVecteur3D<T> TVecteur3D<T>::operator*(const T scalaire)
+{
+	TVecteur3D vecResult;
+
+	vecResult.m_x = this->m_x * scalaire;
+	vecResult.m_y = this->m_y * scalaire;
+	vecResult.m_z = this->m_z * scalaire;
+
+	return vecResult;
+}
+
+template <class T>
+inline T TVecteur3D<T>::operator*(const TVecteur3D vec3dA)
+{
+	T scalaireResult;
+
+	scalaireResult = (this->m_x * vec3dA.m_x) + (this->m_y * vec3dA.m_y) + (this->m_z * vec3dA.m_z);
+
+	return scalaireResult;
+}
+
+template <class T>
+inline TVecteur3D<T> TVecteur3D<T>::operator^(const TVecteur3D vec3dA)
+{
+	TVecteur3D vecResult;
+
+	vecResult.m_x = (this->m_y * vec3dA.m_z) - (this->m_z * vec3dA.m_y);
+	vecResult.m_y = (this->m_z * vec3dA.m_x) - (this->m_x * vec3dA.m_z);
+	vecResult.m_z = (this->m_x * vec3dA.m_y) - (this->m_y * vec3dA.m_x);
+
+	return vecResult;
+}
+
+template <class T>
+inline TVecteur3D<T> TVecteur3D<T>:: operator=(const TVecteur3D vec3dA)
+{
+	return vec3dA;
+}
+
+template <class T>
+inline bool TVecteur3D<T>::operator==(const TVecteur3D vec3dA)
+{
+	bool bResult;
+
+	bResult = ((vec3dA.m_x == vec3dB.m_x) && (vec3dA.m_y == vec3dB.m_y) && (vec3dA.m_z == vec3dB.m_z));
+
+	return bResult;
+}
+#pragma endregion
