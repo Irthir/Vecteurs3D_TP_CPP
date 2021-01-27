@@ -119,7 +119,10 @@ inline TVecteur2D<T> TVecteur2D<T>::operator^(const TVecteur2D vec2dA)
 template <class T>
 inline TVecteur2D<T> TVecteur2D<T>:: operator=(const TVecteur2D vec2dA)
 {
-	return vec2dA;
+	this->m_x = vec2dA.m_x;
+	this->m_y = vec2dA.m_y;
+
+	return *this;
 }
 
 template <class T>

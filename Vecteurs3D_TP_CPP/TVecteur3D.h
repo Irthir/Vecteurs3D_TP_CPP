@@ -148,7 +148,6 @@ inline T TVecteur3D<T>::CalculDeterminant(TVecteur3D vec3dA, TVecteur3D vec3dB)
 	return determinantResult;
 }
 
-
 template <class T>
 inline TVecteur3D<T> TVecteur3D<T>::ProduitMixte(TVecteur3D vec3dA, T determinant)
 {
@@ -222,7 +221,11 @@ inline TVecteur3D<T> TVecteur3D<T>::operator^(const TVecteur3D vec3dA)
 template <class T>
 inline TVecteur3D<T> TVecteur3D<T>:: operator=(const TVecteur3D vec3dA)
 {
-	return vec3dA;
+	this->m_x = vec3dA.m_x;
+	this->m_y = vec3dA.m_y;
+	this->m_z = vec3dA.m_z;
+
+	return *this;
 }
 
 template <class T>

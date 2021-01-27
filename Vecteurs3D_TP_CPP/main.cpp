@@ -1,6 +1,7 @@
 #include <iostream>
 #include "TVecteur3D.h"
 #include "TVecteur2D.h"
+#include "TConteneur.h"
 
 using namespace std;
 
@@ -23,7 +24,7 @@ int main()
 	cout << "Addition des vecteurs A et B : " << endl;
 	vecA.Addition(vecB).Affiche();
 
-	cout << "Soustration du vecteur A par B : " << endl;
+	cout << "Soustraction du vecteur A par B : " << endl;
 	vecA.Soustraction(vecB).Affiche();
 
 	cout << "Produit Scalaire de A et B : " << vecA.ProduitScalaire(vecB) << endl;
@@ -43,7 +44,7 @@ int main()
 
 	cout << "Addition des vecteurs A et B : " << endl << (vecA + vecB) << endl;
 
-	cout << "Soustration du vecteur A par B : " << endl << (vecA - vecB) << endl;
+	cout << "Soustraction du vecteur A par B : " << endl << (vecA - vecB) << endl;
 
 	cout << "Produit Scalaire de A et B : " << (vecA*vecB) << endl;
 
@@ -60,11 +61,32 @@ int main()
 
 	cout << "Addition des vecteurs A et B : " << endl << (vectA + vectB) << endl;
 
-	cout << "Soustration du vecteur A par B : " << endl << (vectA - vectB) << endl;
+	cout << "Soustraction du vecteur A par B : " << endl << (vectA - vectB) << endl;
 
 	cout << "Produit Scalaire de A et B : " << (vectA * vectB) << endl;
 
 	cout << "Produit vectoriel de A et B : " << endl << (vectA ^ vectB) << endl;
+
+	//Travail 3 :
+
+	cout << "Le conteneur de vecteurs !" << endl;
+
+	TConteneur<TVecteur2D<int>, 2> tab2D;
+	tab2D[0] = vectA;
+	tab2D[1] = vectB;
+	for (int i = 0; i < 2; i++)
+	{
+		cout<<tab2D[i]<<endl;
+	}
+
+	TConteneur<TVecteur3D<float>, 3> tab3D;
+	tab3D[0] = vecA;
+	tab3D[1] = vecB;
+	tab3D[2] = vecC;
+	for (int i = 0; i < 3; i++)
+	{
+		cout << tab3D[i] << endl;
+	}
 
 	return 0;
 }
