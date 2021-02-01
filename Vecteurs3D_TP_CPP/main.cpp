@@ -76,7 +76,7 @@ int main()
 	tab2D[1] = vectB;
 	for (int i = 0; i < 2; i++)
 	{
-		cout<<tab2D[i]<<endl;
+		cout<< tab2D[i] <<endl;
 	}
 
 	TConteneur<TVecteur3D<float>, 3> tab3D;

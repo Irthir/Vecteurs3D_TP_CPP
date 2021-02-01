@@ -16,19 +16,19 @@ public:
 	void Affiche() const;
 
 	//Opérations usuelles sur les Vecteurs avec des Surcharges d'opérateurs :
-	TVecteur2D operator+(const TVecteur2D vec2dA); //Addition
+	/*TVecteur2D operator+(const TVecteur2D vec2dA); //Addition
 	TVecteur2D operator-(const TVecteur2D vec2dA); //Soustraction
 	TVecteur2D operator*(const T scalaire); //Multiplication par Scalaire
-	T operator*(const TVecteur2D vec2dA); //Produit Scalaire
+	T operator*(const TVecteur2D vec2dA); //Produit Scalaire*/
 	TVecteur2D operator^(const TVecteur2D vec2dA); //Produit Vectoriel
 
 	TVecteur2D operator=(const TVecteur2D vec2dA); //Affectation
 	bool operator==(const TVecteur2D vec2dA); //Coincide
-	friend ostream& operator<<(ostream& os, const TVecteur2D& vec2d) //Affichage
+	/*friend ostream& operator<<(ostream& os, const TVecteur2D& vec2d) //Affichage
 	{
 		cout << "X = " << vec2d.m_x << " Y = " << vec2d.m_y;
 		return os;
-	}
+	}*/
 	
 	//Fonctions amies
 	friend bool Coincide(TVecteur2D const vec2dA, TVecteur2D const vec2dB)
@@ -47,11 +47,13 @@ template <class T>
 inline TVecteur2D<T>::TVecteur2D(T x, T y):TVecteur3D<T>(x,y,static_cast<T>(1))
 {}
 
+//Appeler le constructeur de copie de la classe Vecteur3D.
 template <class T>
-inline TVecteur2D<T>::TVecteur2D(const TVecteur2D& vectCopie)
+inline TVecteur2D<T>::TVecteur2D(const TVecteur2D& vectCopie):TVecteur3D<T>(vectCopie)
+//Là où on passe un objet de la classe parent, on peut passer un objet de la classe enfant.
 {
-	this->m_x = vectCopie.m_x;
-	this->m_y = vectCopie.m_y;
+	/*this->m_x = vectCopie.m_x;
+	this->m_y = vectCopie.m_y;*/
 }
 
 //Fonction d'affichage
@@ -63,10 +65,11 @@ inline void TVecteur2D<T>::Affiche() const
 
 //Opérations usuelles sur les Vecteurs avec des Surcharges d'opérateurs :
 #pragma region Opérations usuelles sur les Vecteurs.
-template <class T>
+/*template <class T>
 inline TVecteur2D<T> TVecteur2D<T>:: operator+(const TVecteur2D vec2dA)
 {
 	TVecteur2D vecResult;
+
 	vecResult.m_x = this->m_x + vec2dA.m_x;
 	vecResult.m_y = this->m_y + vec2dA.m_y;
 
@@ -103,7 +106,7 @@ inline T TVecteur2D<T>::operator*(const TVecteur2D vec2dA)
 	scalaireResult = (this->m_x * vec2dA.m_x) + (this->m_y * vec2dA.m_y);
 
 	return scalaireResult;
-}
+}*/
 
 template <class T>
 inline TVecteur2D<T> TVecteur2D<T>::operator^(const TVecteur2D vec2dA)

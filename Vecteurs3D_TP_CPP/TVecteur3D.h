@@ -1,6 +1,7 @@
 #pragma once
 #ifndef H_VECTEUR3D
 #define H_VECTEUR3D
+//Macros pré-processeur (pour l'éditeur de lien ?) qui caractérisent l'inclusion conditionnelle, pour éviter la double inclusion.
 
 #include <iostream>
 
@@ -64,6 +65,7 @@ inline TVecteur3D<T>::TVecteur3D(T x, T y, T z)
 
 template <class T>
 inline TVecteur3D<T>::TVecteur3D(const TVecteur3D& vectCopie)
+//Il est possible d'interdire la recopie d'objet en ne mettant le constructeur de copie en privée et sans implémentation.
 {
 	m_x = vectCopie.m_x;
 	m_y = vectCopie.m_y;
@@ -84,6 +86,7 @@ template <class T>
 inline TVecteur3D<T> TVecteur3D<T>::Addition(TVecteur3D vec3dA)
 {
 	TVecteur3D vecResult;
+
 	vecResult.m_x = this->m_x + vec3dA.m_x;
 	vecResult.m_y = this->m_y + vec3dA.m_y;
 	vecResult.m_z = this->m_z + vec3dA.m_z;
@@ -165,6 +168,7 @@ template <class T>
 inline TVecteur3D<T> TVecteur3D<T>:: operator+(const TVecteur3D vec3dA)
 {
 	TVecteur3D vecResult;
+
 	vecResult.m_x = this->m_x + vec3dA.m_x;
 	vecResult.m_y = this->m_y + vec3dA.m_y;
 	vecResult.m_z = this->m_z + vec3dA.m_z;
